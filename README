@@ -1,0 +1,164 @@
+# Sistema de Gerenciamento de Biblioteca
+
+## Descrição do Projeto
+
+Este projeto consiste em um Sistema de Gerenciamento de Biblioteca desenvolvido em linguagem C para a disciplina de Estrutura de Dados.
+
+O sistema utiliza:
+
+* Tipos Abstratos de Dados (TADs);
+* Árvore Binária de Busca (ABB);
+* Fila;
+* Lista Encadeada;
+* Ponteiros e alocação dinâmica de memória.
+
+O objetivo principal é realizar o gerenciamento de livros, empréstimos, devoluções e reservas utilizando estruturas de dados implementadas manualmente.
+
+---
+
+# Estruturas Utilizadas
+
+## 1. Árvore Binária de Busca (ABB)
+
+A ABB é utilizada como estrutura principal do sistema.
+
+Cada nó da árvore armazena um livro, organizado pelo código identificador do livro.
+
+A árvore permite:
+
+* inserção de livros;
+* busca rápida por código;
+* listagem em ordem;
+* listagem em pré-ordem;
+* listagem em pós-ordem;
+* cálculo da altura da árvore;
+* contagem de livros cadastrados.
+
+---
+
+## 2. Fila de Reservas
+
+Cada livro possui sua própria fila de reservas.
+
+A fila segue a política FIFO (First In, First Out), ou seja:
+
+* o primeiro usuário a reservar;
+* será o primeiro a receber o livro quando houver devolução.
+
+Quando um livro não possui exemplares disponíveis, o usuário pode entrar na fila de reservas.
+
+Ao ocorrer uma devolução:
+
+* o sistema verifica se existe reserva;
+* caso exista, o empréstimo é realizado automaticamente para o primeiro usuário da fila.
+
+---
+
+## 3. Lista Encadeada de Histórico
+
+A lista encadeada é utilizada para armazenar o histórico de empréstimos realizados.
+
+Cada registro contém:
+
+* nome do usuário;
+* código do livro;
+* título do livro.
+
+---
+
+# Funcionalidades do Sistema
+
+O sistema possui um menu interativo com as seguintes funcionalidades:
+
+1. Cadastrar livro;
+2. Buscar livro por código;
+3. Listar livros em ordem;
+4. Listar livros em pós-ordem;
+5. Listar livros em pré-ordem;
+6. Exibir altura da árvore;
+7. Exibir quantidade de livros;
+8. Realizar empréstimo;
+9. Realizar devolução;
+10. Exibir fila de reservas;
+11. Exibir histórico de empréstimos;
+12. Encerrar sistema.
+
+---
+
+# Funcionamento Geral
+
+## Cadastro de Livro
+
+Ao cadastrar um livro, o sistema solicita:
+
+* código;
+* título;
+* autor;
+* ano;
+* quantidade total de exemplares.
+
+O livro é inserido na ABB utilizando o código como critério de ordenação.
+
+---
+
+## Empréstimo
+
+Ao realizar um empréstimo:
+
+* o sistema busca o livro na ABB;
+* verifica a quantidade disponível;
+* registra o empréstimo na lista de histórico.
+
+Caso não existam exemplares disponíveis:
+
+* o usuário pode entrar na fila de reservas do livro.
+
+---
+
+## Devolução
+
+Ao devolver um livro:
+
+* a quantidade disponível é aumentada;
+* o sistema verifica se existem reservas;
+* caso exista fila, o empréstimo é realizado automaticamente para o próximo usuário.
+
+---
+
+# Organização dos Arquivos
+
+O projeto está organizado em módulos:
+
+```text
+main.c
+arvore_livros.h
+arvore_livros.c
+fila_reserva.h
+fila_reserva.c
+lista_historico.h
+lista_historico.c
+
+---
+
+# Conceitos Utilizados
+
+O projeto utiliza os seguintes conceitos de Estrutura de Dados:
+
+* Tipos Abstratos de Dados;
+* Recursão;
+* Árvore Binária de Busca;
+* Lista Encadeada;
+* Fila;
+* Alocação dinâmica;
+* Manipulação de ponteiros;
+* Modularização em arquivos `.h` e `.c`.
+
+---
+
+# Observações
+
+* O sistema foi desenvolvido inteiramente em linguagem C;
+* Todas as estruturas foram implementadas manualmente;
+* Não foram utilizadas bibliotecas prontas para estruturas dinâmicas;
+* O projeto possui suporte a reservas automáticas por livro;
+* O sistema inclui funções de debug para inserção automática de livros.
