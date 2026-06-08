@@ -34,6 +34,79 @@ No* inserir(No* raiz, Livro livro) {
     return raiz;
 }
 
+int maior(int a, int b) {
+    return a > b ? a : b;
+}
+
+int fatorBalanceamento(No* raiz) {
+    if (raiz == NULL) {
+        return 0;
+    }
+
+    return calcularAlturaDaArvore(raiz->esquerda) - calcularAlturaDaArvore(raiz->direita);
+}
+
+No* rotacaoDireita(No* raiz) {
+    No* novaRaiz = raiz->esquerda;
+    No* temp = novaRaiz->direita;
+
+    novaRaiz->direita = raiz;
+    raiz->esquerda = temp;
+
+    return novaRaiz;
+}
+
+No* rotacaoEsquerda(No* raiz) {
+    No* novaRaiz = raiz->direita;
+    No* temp = novaRaiz->esquerda;
+
+    novaRaiz->esquerda = raiz;
+    raiz->direita = temp;
+
+    return novaRaiz;
+}
+
+No* inserirBalanceado(No* raiz, Livro livro) {
+    if (raiz == NULL) {
+        return criarNo(livro);
+    }
+
+    if (livro.codigo < raiz->livro.codigo) {
+        raiz->esquerda = inserirBalanceado(raiz->esquerda, livro);
+    } else if (livro.codigo > raiz->livro.codigo) {
+        raiz->direita = inserirBalanceado(raiz->direita, livro);
+    } else {
+        printf("Codigo ja cadastrado.\n");
+        return raiz;
+    }
+
+    int balanceamento = fatorBalanceamento(raiz);
+
+    // Caso esquerda-esquerda
+    if (balanceamento > 1 && livro.codigo < raiz->esquerda->livro.codigo) {
+        return rotacaoDireita(raiz);
+    }
+
+    // Caso direita-direita
+    if (balanceamento < -1 && livro.codigo > raiz->direita->livro.codigo) {
+        return rotacaoEsquerda(raiz);
+    }
+
+    // Caso esquerda-direita
+    if (balanceamento > 1 && livro.codigo > raiz->esquerda->livro.codigo) {
+        raiz->esquerda = rotacaoEsquerda(raiz->esquerda);
+        return rotacaoDireita(raiz);
+    }
+
+    // Caso direita-esquerda
+    if (balanceamento < -1 && livro.codigo < raiz->direita->livro.codigo) {
+        raiz->direita = rotacaoDireita(raiz->direita);
+        return rotacaoEsquerda(raiz);
+    }
+
+    return raiz;
+}
+
 No* buscar(No* raiz, int codigo) {
     if (raiz == NULL || raiz->livro.codigo == codigo) {
         return raiz;

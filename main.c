@@ -56,7 +56,8 @@ void inserirLivroNoSitema(No** raiz) {
     };
     strcpy(livro.titulo, nomeLivro);
     strcpy(livro.autor, nomeAutor);
-    *raiz = inserir(*raiz, livro);
+    *raiz = inserirBalanceado(*raiz, livro);
+    //*raiz = inserir(*raiz, livro);
 
 }
 
@@ -307,13 +308,21 @@ void carregarLivrosDebug(No** raiz) {
         criarFila()
     };
 
-    *raiz = inserir(*raiz, l1);
-    *raiz = inserir(*raiz, l2);
-    *raiz = inserir(*raiz, l3);
-    *raiz = inserir(*raiz, l4);
-    *raiz = inserir(*raiz, l5);
-    *raiz = inserir(*raiz, l6);
-    *raiz = inserir(*raiz, l7);
+    *raiz = inserirBalanceado(*raiz, l1);
+    *raiz = inserirBalanceado(*raiz, l2);
+    *raiz = inserirBalanceado(*raiz, l3);
+    *raiz = inserirBalanceado(*raiz, l4);
+    *raiz = inserirBalanceado(*raiz, l5);
+    *raiz = inserirBalanceado(*raiz, l6);
+    *raiz = inserirBalanceado(*raiz, l7);
+
+    // *raiz = inserir(*raiz, l1);
+    // *raiz = inserir(*raiz, l2);
+    // *raiz = inserir(*raiz, l3);
+    // *raiz = inserir(*raiz, l4);
+    // *raiz = inserir(*raiz, l5);
+    // *raiz = inserir(*raiz, l6);
+    // *raiz = inserir(*raiz, l7);
 
     printf("\nLivros de debug carregados com sucesso!\n");
 }

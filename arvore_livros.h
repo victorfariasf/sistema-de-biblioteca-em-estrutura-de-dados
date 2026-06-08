@@ -32,4 +32,9 @@ void liberarArvore(No* raiz);
 int contagemDeLivros(No* raiz);
 int calcularAlturaDaArvore(No* raiz);
 
+int fatorBalanceamento(No* raiz);
+No* rotacaoDireita(No* raiz);
+No* rotacaoEsquerda(No* raiz);
+No* inserirBalanceado(No* raiz, Livro livro);
+
 #endif //PROGRAMAS_E_ARVORE_LIVROS_H
