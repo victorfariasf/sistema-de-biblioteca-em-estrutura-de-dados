@@ -16,6 +16,28 @@ O objetivo principal é realizar o gerenciamento de livros, empréstimos, devolu
 
 ---
 
+## Compilação
+
+Recomenda-se utilizar a IDE **CLion** para compilar e executar o projeto, pois ela já possui integração nativa com 
+projetos em C organizados em múltiplos arquivos `.c` e `.h`.
+
+O projeto está configurado para utilizar o **CMake** por meio do arquivo `CMakeLists.txt`, responsável por 
+gerenciar automaticamente a compilação e o vínculo entre os módulos do sistema.
+
+### Passos para executar
+
+1. Abra o projeto no CLion.
+2. Aguarde a IDE carregar e configurar o ambiente CMake automaticamente.
+3. Selecione a configuração de execução criada pelo CLion.
+4. Clique em **Run** ou pressione **Shift + F10** para compilar e executar o programa.
+
+### Compilação manual (GCC)
+
+Caso não utilize o CLion, o projeto também pode ser compilado via terminal com o GCC:
+
+```bash
+gcc main.c arvore_livros.c fila_reserva.c lista_historico.c -o biblioteca
+
 # Estruturas Utilizadas
 
 ## 1. Árvore Binária de Busca (ABB)
