@@ -18,22 +18,6 @@ No* criarNo(Livro livro) {
     return novo;
 }
 
-No* inserir(No* raiz, Livro livro) {
-    if (raiz == NULL) {
-        return criarNo(livro);
-    }
-
-    if (livro.codigo < raiz->livro.codigo) {
-        raiz->esquerda = inserir(raiz->esquerda, livro);
-    } else if (livro.codigo > raiz->livro.codigo) {
-        raiz->direita = inserir(raiz->direita, livro);
-    } else if (livro.codigo == raiz->livro.codigo) {
-        printf("Codigo ja cadastrado.\n");
-    }
-
-    return raiz;
-}
-
 int maior(int a, int b) {
     return a > b ? a : b;
 }

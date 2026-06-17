@@ -7,12 +7,9 @@
 
 char mostrarTela(No** raiz, Fila* fila, Lista* lista);
 void inserirLivroNoSitema(No** raiz);
-
 void realizarEmprestimo(No** raiz, Lista* lista);
 void realizarDevolucao(No** raiz, Lista* lista);
-
 void carregarLivrosDebug(No** raiz);
-
 void exibirFilaReservasDoLivro(No* raiz);
 
 int main(void) {
